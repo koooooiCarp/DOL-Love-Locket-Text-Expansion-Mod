@@ -1,0 +1,37 @@
+:: Home Masturbation LL
+<<set $outside to 0>><<set $location to "home">><<effects>><<run statusCheck("Sydney")>>
+
+<<if $masturbationstart is 1>>
+	<<set $masturbationstart to 0>>
+	<<set $masturbationstat += 1>>
+	<<masturbationstart>>
+
+	你沿着地板滑下，让你的手移动。
+	<<if $phase is 1>>
+	<<if _sydneyStatus.includes("corrupt")>>
+		你想象着悉尼发现你的样子。<<nnpc_him Sydney>>会很乐意"帮忙"的。
+	<<else>>
+		你想象着悉尼发现你的样子。对如此纯洁的人自慰的想法让你颇感性奋。
+	<</if>>
+	<<elseif $phase is 2>>
+		你不禁想到，此时此刻，凯拉尔会在和你做一样的事吗……？
+	<</if>><<garousal>><<arousal 200>>
+	<br><br>
+<</if>>
+<<masturbationeffects>>
+<<masturbationactions>>
+<<masturbationControls>>
+
+:: Home Masturbation LL Finish
+<<effects>>
+<<if $phase is 1>>
+你叹气，啄吻了一口相片里的悉尼。
+<<elseif $phase is 2>>
+你叹气，擦去了落在相片中凯拉尔脸上的淫液。
+<</if>>
+<<endmasturbation>>
+<<endcombat>>
+<br>
+
+<<link [[继续|Bedroom]]>><<clotheson>><<endevent>><</link>>
+<br>
