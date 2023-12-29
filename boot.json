@@ -1,6 +1,6 @@
 {
   "name": "Love Locket-Text Expansion",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "additionFile": [
     "readme.md",
     "game/overworld-town/loc-home/LoveLocketLeave.txt",
@@ -107,13 +107,13 @@
 			"replaceFile": "game/overworld-town/loc-prison/PrisonCollarOn.txt"
 		},
 		{
-			"passage": "Widgets Prison",
-			"findString": "<<if $prison.active_punishments.includes(\"free use\")",
+			"passage": "Prison Cell Role",
+			"findString": "<<elseif $prison.active_punishments.includes(\"free use\")",
 			"replaceFile": "game/overworld-town/loc-prison/PrisonCheckCollarGuards.txt"
 		},
 		{
 			"passage": "Widgets Prison",
-			"findString": "<<ggattention>><<prison_attention 2>>\n\t\t\t\t<<else>>",
+			"findString": "<<ggattention prison>><<prison_attention 2>>\n\t\t\t\t<<else>>",
 			"replaceFile": "game/overworld-town/loc-prison/PrisonNoCollarEvents.txt"
 		},
 		{

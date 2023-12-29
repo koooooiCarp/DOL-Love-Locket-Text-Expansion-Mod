@@ -25,7 +25,7 @@
 					<<He>>好奇地看向你的吊坠，"我……我能看看吗？"
 				<</if>><br><br>
 				<<if $worn.neck.photo is "Kylar">>
-					你略微犹豫一刻，打开了吊坠。<span class="green">里面是凯拉尔的照片。/span><br>
+					你略微犹豫一刻，打开了吊坠。<span class="green">里面是凯拉尔的照片。</span><br>
 					凯拉尔吃惊地倒吸了一口气，原地跳了起来。"亲、亲爱的，"<<he>>看起来快哭了，"你随身携带着我的照片？！而且还在这里？！"<<he>>颤抖着手紧紧抓住你，"这样做可能会招致那些家伙的惩罚，但、但没关系，我会保护你的，一定。"
 					<<npcincr Kylar rage -30>><<lllksuspicion>><br>
 					你向<<he>>敞开怀抱，你们深深地拥抱了一会儿。<<pass 5>><<lstress>><<stress -6>>

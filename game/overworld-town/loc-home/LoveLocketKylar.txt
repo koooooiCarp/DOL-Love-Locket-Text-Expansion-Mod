@@ -37,7 +37,7 @@
 		不知道<<nnpc_he Kylar>>会不会在找你。<<ltrauma>><<trauma -4>>
 		<</if>>
 	<<case 3>>
-		你回想起<<nnpc_he Kylar>>为你画的那些画。<<lstress>><<stress -3>>
+	你回想起<<nnpc_he Kylar>>为你画的那些画。<<lstress>><<stress -3>>
 	<<case 4>>
 		<<if $christmas is 1>>
 		圣诞节到了，<<nnpc_he Kylar>>现在会在为了圣诞礼物做准备吗？<<lstress>><<stress -5>>
@@ -165,7 +165,7 @@
 			<<if Time.hour is 6 or Time.hour is 12 or Time.hour is 18>>
 			食堂开放的时间到了，你希望<<nnpc_him Kylar>>今天不会被囚犯欺负。
 			<<else>>
-			你想到监狱的一日三餐。凯拉尔说的对，<<if $cat gte 4>>你也有点想吃鱼。<<else>>感觉和学校里也没什么不同。<</if>>
+			你想到凯拉尔对监狱食堂的评价。确实，<<if $cat gte 4>>你也有点想吃鱼。<<else>>感觉和学校里也没什么不同。<</if>>
 			<</if>>
 		<<else>>
 			<<if Time.hour is 6 or Time.hour is 12 or Time.hour is 18>>
