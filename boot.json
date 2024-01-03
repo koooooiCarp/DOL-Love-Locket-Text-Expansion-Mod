@@ -1,11 +1,12 @@
 {
   "name": "Love Locket-Text Expansion",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "additionFile": [
     "readme.md",
     "game/overworld-town/loc-home/LoveLocketLeave.txt",
     "game/overworld-town/loc-home/LoveLocketSydney.txt",
 	"game/overworld-town/loc-home/LoveLocketKylar.txt",
+	"game/overworld-town/loc-home/LoveLocketGreatHawk.txt",
     "game/overworld-forest/loc-asylum/LoveLocketAsylum.txt",
 	"game/overworld-town/loc-police/PoliceStore.txt",
 	"game/overworld-town/loc-police/PoliceStoreon.txt",
@@ -27,7 +28,8 @@
   ],
   "tweeFileList": [
 	"game/overworld-town/loc-school/LoveLocketCrushSydneyShow.twee",
-	"game/overworld-town/loc-home/LoveLocketMasturbation.twee"
+	"game/overworld-town/loc-home/LoveLocketMasturbation.twee",
+	"game/overworld-plains/loc-bird/BirdTowerMate.twee"
   ],
   "addonPlugin": [ 
     {
@@ -107,8 +109,8 @@
 			"replaceFile": "game/overworld-town/loc-prison/PrisonCollarOn.txt"
 		},
 		{
-			"passage": "Prison Cell Role",
-			"findString": "<<elseif $prison.active_punishments.includes(\"free use\")",
+			"passage": "Widgets Prison",
+			"findString": "<<if $prison.active_punishments.includes(\"free use\")",
 			"replaceFile": "game/overworld-town/loc-prison/PrisonCheckCollarGuards.txt"
 		},
 		{
@@ -170,6 +172,11 @@
 			"passage": "Mirror Locket",
 			"findString": "<<elseif $worn.neck.photo is \"Eden\">>",
 			"replaceFile": "game/overworld-town/loc-home/LoveLocketKylar.txt"
+	  	},
+		{
+			"passage": "Mirror Locket",
+			"findString": "<br><br>\n<</if>>",
+			"replaceFile": "game/overworld-town/loc-home/LoveLocketGreatHawk.txt"
 	  	},
 		{
 			"passage": "Bedroom",

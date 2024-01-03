@@ -2,7 +2,7 @@
 <<if $location is "home">>
 	<<if $arousal gte ($arousalmax / 2) or $drugged gte 200>>
 		你的身体因欲望而抽痛。你用手指轻抚照片中悉尼的脸，一种淫荡的想法从你心中升起。<br><br>
-		<<link [[自慰|Home Masturbation LL]]>><<set $masturbationstart to 1>><<set $phase to 1>><</link>>
+		<<link [[自慰|Home Masturbation LL]]>><<set $masturbationstart to 1>><<set $phase to "Sydney">><</link>>
 	<<elseif $drunk gte 360 or $hallucinogen gte 200>>
 		你迷迷糊糊地亲了一口悉尼。哦不，相片里的悉尼没有回吻你！
 	<<elseif $pain gte 60>>
