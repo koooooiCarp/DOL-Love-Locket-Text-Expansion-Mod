@@ -27,7 +27,7 @@
 				<<if $worn.neck.photo is "Kylar">>
 					你略微犹豫一刻，打开了吊坠。<span class="green">里面是凯拉尔的照片。</span><br>
 					凯拉尔吃惊地倒吸了一口气，原地跳了起来。"亲、亲爱的，"<<he>>看起来快哭了，"你随身携带着我的照片？！而且还在这里？！"<<he>>颤抖着手紧紧抓住你，"这样做可能会招致那些家伙的惩罚，但、但没关系，我会保护你的，一定。"
-					<<npcincr Kylar rage -30>><<lllksuspicion>><br>
+					<<npcincr Kylar love 5>><<npcincr Kylar rage -30>><<lllksuspicion>><br>
 					你向<<he>>敞开怀抱，你们深深地拥抱了一会儿。<<pass 5>><<lstress>><<stress -6>>
 				<<else>>
 					你向后退，对<<he>>摇了摇头。凯拉尔<<if _kylarStatus.includes("Rage")>>猛地捏紧了拳头，<<elseif _kylarStatus.includes("Sus")>>皱着眉看向你，<<else>>看起来很失望，<</if>>但没有更进一步。

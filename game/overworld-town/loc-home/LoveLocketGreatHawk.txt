@@ -48,7 +48,7 @@
 	<<case 3>>
 	<<if $bird.state isnot "home">>
 		<<if $arousal gte ($arousalmax / 2) or $drugged gte 200>>
-			你的身体因欲望而抽痛，你发现自己很渴望<<hawkText>>的触碰。你希望<<nnpc_him "Great Hawk">>快点回来。
+			你的身体因欲望而抽痛，你发现自己很渴望<<hawkText>>的触碰。你希望<<nnpc_him "Great Hawk">>能快点回来。
 		<<elseif $drunk gte 360 or $hallucinogen gte 200>>
 			你迷迷糊糊地看着相片里的<<hawkText>>。<<nnpc_He "Great Hawk">>好似在关切地回望着你。
 		<<elseif $pain gte 60>>
@@ -62,14 +62,14 @@
 		<<elseif $lurkers_held gte 1>>
 			你想起你抓住的潜伏者。或许可以把它作为礼物送给<<hawkText>>，<<nnpc_He "Great Hawk">>会很喜欢的。
 		<<else>>
-			你凝视了一会儿<<hawkText>>的照片，关上了吊坠盒。你希望<<nnpc_him "Great Hawk">>能快一点回来。
+			你凝视了一会儿<<hawkText>>的照片，关上了吊坠盒。你希望<<nnpc_him "Great Hawk">>能快点回来。
 		<</if>>
 	<<else>>
 		<<npc "Great Hawk">>
 		<<if $arousal gte ($arousalmax / 2) or $drugged gte 200 or $_heatArousal or $_rutArousal>>
 			<<if $_heatArousal or $_rutArousal>>你内心的野兽让你燥热，<<else>>你的身体因欲望而抽痛，<</if>>
 			你用手指轻抚照片中的<<hawkText>>，一个淫荡的想法从你心中升起。<br><br>
-			<<link [[求爱|Bird Tower Mate LL]]>><</link>><<gglove>><<gdom "Great Hawk">>
+			<<link [[求欢|Bird Tower Mate LL]]>><</link>><<gglove>><<gdom "Great Hawk">>
 		<<elseif $drunk gte 360 or $hallucinogen gte 200>>
 			你迷迷糊糊地看着相片里的<<hawkText>>。<<nnpc_He "Great Hawk">>好似在关切地回望着你。
 		<<elseif $pain gte 60>>

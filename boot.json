@@ -1,6 +1,6 @@
 {
   "name": "Love Locket-Text Expansion",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "additionFile": [
     "readme.md",
     "game/overworld-town/loc-home/LoveLocketLeave.txt",
@@ -24,6 +24,8 @@
 	"game/overworld-town/loc-prison/PrisonLeashOff.txt",
 	"game/overworld-town/loc-prison/PrisonKylarCollar.txt",
 	"game/overworld-town/loc-school/LoveLocketCrushSydney.txt",
+	"game/overworld-town/special-sydney/LoveLocketSyndeyNotice.txt",
+	"game/overworld-town/special-kylar/LoveLocketKylarNotice.txt",
 	"game/overworld-town/loc-home/LLDebug.txt"
   ],
   "tweeFileList": [
@@ -154,14 +156,24 @@
 			"replaceFile": "game/overworld-town/loc-prison/PrisonLeashOff.txt"
 		},
 		{
+			"passage": "Prison Kylar",
+			"findString": "<br><br>",
+			"replaceFile": "game/overworld-town/loc-prison/PrisonKylarCollar.txt"
+		},		
+		{
 			"passage": "Widgets School Events",
 			"findString": "Courtyard Crush Sydney Ignore]]>><<stress 6>><</link>><<gstress>>",
 			"replaceFile": "game/overworld-town/loc-school/LoveLocketCrushSydney.txt"
 		},
 		{
-			"passage": "Prison Kylar",
-			"findString": "<br><br>",
-			"replaceFile": "game/overworld-town/loc-prison/PrisonKylarCollar.txt"
+			"passage": "Widgets Sydney",
+			"findString": "<<if $daily.sydney.classWarn is 1>>",
+			"replaceFile": "game/overworld-town/special-sydney/LoveLocketSyndeyNotice.txt"
+		},
+		{
+			"passage": "Widgets Kylar",
+			"findString": "<<elseif $kylar.riddle is 2>>",
+			"replaceFile": "game/overworld-town/special-kylar/LoveLocketKylarNotice.txt"
 		},
         {
           	"passage": "Mirror Locket",

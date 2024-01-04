@@ -3,7 +3,7 @@
 <<bird_schedule>>
 <<if $bird.activity is "sleep">>
     你走向在巢中睡觉的<<hawkText>>。<br><br>
-    <<link [[为做爱而唤醒|Bird Tower Nest Rub]]>><<transform bird 1>><<npcincr "Great Hawk" love 3>><<npcincr "Great Hawk" dom 1>><<set $phase to 2>><</link>><<gglove>><<gdom "Great Hawk">>
+    <<link [[为做爱而唤醒|Bird Tower Nest Rub]]>><<transform bird 1>><<npcincr "Great Hawk" love 3>><<npcincr "Great Hawk" dom 1>><<set $phase to 2>><</link>>
 <<elseif $bird.activity is "sing" or $bird.activity is "groom">>
     你走向栖木，<<hawkText>>正在栖木上待着。<<bHe>>看到你靠近，展开了翅膀。
 	<br><br>
@@ -43,7 +43,7 @@
     你走向巢，<<hawkText>>正在巢里调整一些<<print either("树枝","树叶","木棍")>>的位置。看到你靠近，<<bHe>>停下了爪中的活计。
 	<br><br>
 	<<if $speech_attitude is "meek">>
-		你迅速钻进了<<hawkText>>的怀里，用你的<<bottom>>渴望地磨蹭着<<bhim>>，"<<nnpc_wife "Great Hawk">>……<<if $pregnancyspeechdisable is "f">>我们来造宝宝吧。<</if>>"
+		你在巢里趴下，用你的<<bottom>>渴望地磨蹭着<<bhim>>，"想、想来交配吗，<<nnpc_wife "Great Hawk">>？"
 	<<elseif $speech_attitude is "bratty">>
 		你靠在<<bhim>>的身上，让<<bhe>>无法拒绝。"来做点更有趣的吧，<<nnpc_wife "Great Hawk">>。"
 	<<else>>
@@ -72,13 +72,8 @@
 		<<set $position to "doggy">>
 		<<set $NPCList[0].stance to "top">>
 	<</if>>
-	<<if $phase is 1>>
-		<<npchand>>
-	<<elseif $phase is 2>>
 		<<npc_attempt_sex>>
-	<<else>>
 		<<deviancy1>>
-	<</if>>
 <</if>>
 
 <<effects>>
