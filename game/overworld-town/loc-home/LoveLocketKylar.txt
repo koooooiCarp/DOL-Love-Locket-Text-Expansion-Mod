@@ -13,6 +13,12 @@
 		不安感使你心烦意乱。你深呼吸，把吊坠紧紧地贴在胸口。<<ltrauma>><<trauma -3>>
 	<<elseif $tiredness gte (C.tiredness.max / 5) * 4>>
 		你迷迷瞪瞪地蹭了蹭相片里的凯拉尔。
+	<<elseif C.npc.Kylar.state is "prison">>
+		<<if $syndromekylar gte 1>>
+		你不禁好奇凯拉尔在监狱里过得如何。
+		<<else>>
+		你偶尔会好奇凯拉尔到底获得了多长的刑期。
+		<</if>>
 	<<else>>
 		你对凯拉尔的照片也凝视回去，随后关上了吊坠盒。
 	<</if>> 
@@ -21,7 +27,7 @@
 <<switch random(1, 5)>>
     <<case 1>>
     在海洋深处居然还有这样的小岛，
-    	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "prison">>
+    	<<if C.npc.Kylar.state is "prison">>
     	不知道这里距离监狱有多远？
     	<<elseif _kylarStatus.includes("Rage")>>
     	你认为哪怕是<<nnpc_him Kylar>>也没法追到这么远的地方来。<<lstress>><<stress -3>>
@@ -78,7 +84,7 @@
 	<<if $innocencestate is 1>>
 		<<if $loveInterest.primary is "Kylar" or $loveInterest.secondary is "Kylar">>
 			<<if random(1,8) is 1>>
-			一些记忆从你的脑海中闪过。<<if $syndromekylar gte 1>>曾经与凯拉尔亲密的场景……你真的做过那些事吗？<<else>>你回想起凯拉尔那总是跟着你的视线。<</if>><<gawareness>><<awareness 5>>
+			一些记忆从你的脑海中闪过。<<if $syndromekylar gte 1>>曾经与凯拉尔亲密的场景……你真的做过那些事吗？<<gawareness>><<awareness 5>><<else>>你回想起凯拉尔那总是跟着你的视线。<<gawareness>><<awareness 1>><</if>>
 			<<elseif random(1,8) is 2 or random(1,8) is 3 or random(1,8) is 4 or random(1,8) is 5>>
 			虽然不太清楚为什么，但是每当看到<<nnpc_him Kylar>>的脸时，你就感到放松了一些。<<lstress>><<stress -3>>
 			<<else>>
@@ -161,7 +167,7 @@
 你看着照片，思绪放空。
 	<<switch random(1, 5)>>
 		<<case 1>>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "prison">>
+		<<if C.npc.Kylar.state is "prison">>
 			<<if Time.hour is 6 or Time.hour is 12 or Time.hour is 18>>
 			食堂开放的时间到了，你希望<<nnpc_him Kylar>>今天不会被囚犯欺负。
 			<<else>>
@@ -175,7 +181,7 @@
 			<</if>>
 		<</if>>
 		<<case 2>>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "prison">>
+		<<if C.npc.Kylar.state is "prison">>
 			<<if $prison.hours_worked lt 9>>
 			你想知道凯拉尔在监狱里什么地方工作。
 			<<else>>
@@ -193,7 +199,7 @@
 		<</if>>
 		<<case 3>>
 			<<if $prison.schedule is "revolt">>
-			囚犯们很吵。如果这次能乘乱逃出去，也许<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "prison">>能带着凯拉尔一起逃跑。<<else>>很快就能再见到凯拉尔了。<</if>>
+			囚犯们很吵。如果这次能乘乱逃出去，也许<<if C.npc.Kylar.state is "prison">>能带着凯拉尔一起逃跑。<<else>>很快就能再见到凯拉尔了。<</if>>
 			<<elseif $prison.wren_names is 2>>
 			你已经集齐了伦恩需要的所有名字。只需等一个好时机。
 			<<elseif $prison.wren_names is 1>>
@@ -208,7 +214,7 @@
 			你对怎样离开这座监狱毫无头绪。也许好好服役总能带来点好处。
 			<</if>>
 		<<case 4>>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "prison">>
+		<<if C.npc.Kylar.state is "prison">>
 			<<if $christmas is 1>>
 			圣诞节到了，今年恐怕只能和凯拉尔在狱中度过新年了。<<gstress>><<stress 5>>
 			<<elseif $valentines is 1>>

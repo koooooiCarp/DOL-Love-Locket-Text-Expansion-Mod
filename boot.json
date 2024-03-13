@@ -1,12 +1,13 @@
 {
   "name": "Love Locket-Text Expansion",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "additionFile": [
     "readme.md",
     "game/overworld-town/loc-home/LoveLocketLeave.txt",
     "game/overworld-town/loc-home/LoveLocketSydney.txt",
 	"game/overworld-town/loc-home/LoveLocketKylar.txt",
 	"game/overworld-town/loc-home/LoveLocketGreatHawk.txt",
+	"game/overworld-town/loc-home/LoveLocketRobin.txt",
     "game/overworld-forest/loc-asylum/LoveLocketAsylum.txt",
 	"game/overworld-town/loc-police/PoliceStore.txt",
 	"game/overworld-town/loc-police/PoliceStoreon.txt",
@@ -23,13 +24,17 @@
 	"game/overworld-town/loc-prison/PrisonScarredLeashNoCollar.txt",
 	"game/overworld-town/loc-prison/PrisonLeashOff.txt",
 	"game/overworld-town/loc-prison/PrisonKylarCollar.txt",
+	"game/overworld-town/loc-school/LoveLocketBully.txt",
 	"game/overworld-town/loc-school/LoveLocketCrushSydney.txt",
+	"game/overworld-town/loc-school/LoveLocketCrushRobin.txt",
+	"game/overworld-town/loc-school/LoveLocketCrushWhitney.txt",
 	"game/overworld-town/special-sydney/LoveLocketSyndeyNotice.txt",
 	"game/overworld-town/special-kylar/LoveLocketKylarNotice.txt",
+	"game/overworld-town/special-robin/LoveLocketRobinNotice.txt",
 	"game/overworld-town/loc-home/LLDebug.txt"
   ],
   "tweeFileList": [
-	"game/overworld-town/loc-school/LoveLocketCrushSydneyShow.twee",
+	"game/overworld-town/loc-school/LoveLocketCrushShow.twee",
 	"game/overworld-town/loc-home/LoveLocketMasturbation.twee",
 	"game/overworld-plains/loc-bird/BirdTowerMate.twee"
   ],
@@ -66,7 +71,7 @@
 		},
         {
           "passage": "Asylum Cell",
-          "findString": "\t<<if $asylumstate isnot \"sleep\">>",
+          "findString": "<<if $asylumstate isnot \"sleep\">>",
           "replaceFile": "game/overworld-forest/loc-asylum/LoveLocketAsylum.txt",
           "all": true
         },
@@ -162,8 +167,23 @@
 		},		
 		{
 			"passage": "Widgets School Events",
+			"findString": "<<else>>\n\t\t<<set $bullyevent to 4>>",
+			"replaceFile": "game/overworld-town/loc-school/LoveLocketBully.txt"
+		},		
+		{
+			"passage": "Widgets School Events",
 			"findString": "Courtyard Crush Sydney Ignore]]>><<stress 6>><</link>><<gstress>>",
 			"replaceFile": "game/overworld-town/loc-school/LoveLocketCrushSydney.txt"
+		},
+		{
+			"passage": "Widgets School Events",
+			"findString": "Courtyard Crush Robin Ignore]]>><<stress 6>><</link>><<gstress>>",
+			"replaceFile": "game/overworld-town/loc-school/LoveLocketCrushRobin.txt"
+		},
+		{
+			"passage": "Widgets School Events",
+			"findString": "Courtyard Crush Whitney Ignore]]>><<stress 6>><</link>><<gstress>>",
+			"replaceFile": "game/overworld-town/loc-school/LoveLocketCrushWhitney.txt"
 		},
 		{
 			"passage": "Widgets Sydney",
@@ -174,6 +194,11 @@
 			"passage": "Widgets Kylar",
 			"findString": "<<elseif $kylar.riddle is 2>>",
 			"replaceFile": "game/overworld-town/special-kylar/LoveLocketKylarNotice.txt"
+		},
+		{
+			"passage": "Widgets Robin",
+			"findString": "<<if $robinPostMortem>>",
+			"replaceFile": "game/overworld-town/special-robin/LoveLocketRobinNotice.txt"
 		},
         {
           	"passage": "Mirror Locket",
@@ -189,6 +214,11 @@
 			"passage": "Mirror Locket",
 			"findString": "<br><br>\n<</if>>",
 			"replaceFile": "game/overworld-town/loc-home/LoveLocketGreatHawk.txt"
+	  	},
+		{
+			"passage": "Mirror Locket",
+			"findString": "<<elseif $worn.neck.photo is \"Whitney\">>",
+			"replaceFile": "game/overworld-town/loc-home/LoveLocketRobin.txt"
 	  	},
 		{
 			"passage": "Bedroom",

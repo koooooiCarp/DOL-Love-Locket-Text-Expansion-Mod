@@ -7,6 +7,9 @@
 		你迷迷糊糊地亲了一口悉尼。哦不，相片里的悉尼没有回吻你！
 	<<elseif $pain gte 60>>
 		你很难从泪水中看清悉尼的照片。你擦了擦眼睛，才发现原来是眼泪落在了吊坠上。<<pain -5>>
+	<<elseif $daily.sydney.punish>>
+		悉尼今天情绪很低落，提早回了家。<<if $daily.sydney.offSchedule>>那个<<if maleChance() lt random(1, 100)>>修女<<else>>修士<</if>>是这么告诉你的。<</if>><br>
+		你知道为什么。<<gtrauma>><<trauma 3>>
 	<<elseif $stress gte (($stressmax / 5) * 3)>>
 		焦虑压迫着你的胸腔，使你几乎无法呼吸。你把吊坠紧紧地抓在手里。<<lstress>><<stress -3>>
 	<<elseif $trauma gte ($traumamax / 5) * 3>>
@@ -80,7 +83,7 @@
 	<<if $innocencestate is 1>>
 		<<if $loveInterest.primary is "Sydney" or $loveInterest.secondary is "Sydney">>
 			<<if random(1,8) is 1>>
-			一些记忆从你的脑海中闪过。<<if $sydney.sexTotal gte 1>>曾经与悉尼亲密的场景……你真的做过那些事吗？<<else>>你回想起悉尼琥珀色的眼瞳。<</if>><<gawareness>><<awareness 5>>
+			一些记忆从你的脑海中闪过。<<if $sydney.sexTotal gte 1>>曾经与悉尼亲密的场景……你真的做过那些事吗？<<gawareness>><<awareness 5>><<else>>你回想起悉尼琥珀色的眼瞳。<<gawareness>><<awareness 1>><</if>>
 			<<elseif random(1,8) is 2 or random(1,8) is 3 or random(1,8) is 4 or random(1,8) is 5>>
 			虽然不太清楚为什么，但是每当看到<<nnpc_him Sydney>>的脸，你心中就感到一阵平静。<<lstress>><<stress -3>>
 			<<else>>

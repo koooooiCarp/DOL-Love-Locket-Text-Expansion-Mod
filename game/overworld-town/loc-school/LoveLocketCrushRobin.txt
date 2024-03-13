@@ -1,0 +1,5 @@
+Courtyard Crush Robin Ignore]]>><<stress 6>><</link>><<gstress>>
+<br>
+<<if $worn.neck.name is "love locket" and $worn.neck.photo is "Robin">>
+<<link [[展示吊坠|Courtyard Crush Robin Show LL]]>><<stress -6>><</link>><<lstress>>
+<</if>>

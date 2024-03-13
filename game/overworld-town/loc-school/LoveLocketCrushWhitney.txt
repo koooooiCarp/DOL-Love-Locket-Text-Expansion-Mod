@@ -1,0 +1,5 @@
+Courtyard Crush Whitney Ignore]]>><<stress 6>><</link>><<gstress>>
+<br>
+<<if $worn.neck.name is "love locket" and $worn.neck.photo is "Whitney">>
+<<link [[展示吊坠|Courtyard Crush Whitney Show LL]]>><<stress -6>><</link>><<lstress>>
+<</if>>
