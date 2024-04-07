@@ -1,5 +1,5 @@
 
-<<if $worn.neck.name is "love locket" and $rng gte 90 and !$daily.sydney.lovelocket and $NPCName[$NPCNameList.indexOf("Sydney")].love gte 10>>
+<<if $worn.neck.name is "love locket" and $rng gte 90 and !$daily.sydney.lovelocket and C.npc.Sydney.love gte 10>>
 <<set $daily.sydney.lovelocket to 1>>
 <<He>>注意到了你的同心吊坠。<br>
     <<if $sydneyromance is 1>>

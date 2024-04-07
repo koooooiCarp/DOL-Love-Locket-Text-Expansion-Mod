@@ -18,7 +18,26 @@
 	<<elseif $tiredness gte (C.tiredness.max / 5) * 4>>
 		你迷迷瞪瞪地盯了一会儿相片里的罗宾。
 	<<else>>
+		<<switch random(1, 3)>>
+		<<case 1>>
+			你凝视了一会儿罗宾的照片，关上了吊坠盒。
+		<<case 2>>
+		<<if $cat gte 6 or $cow gte 6>>
+			你的耳朵微微抖动。你很喜欢<<nnpc_he Robin>>轻柔又舒适的抚摸。
+		<<elseif $fox gte 6 or $wolfgirl gte 6>>
+			你的尾巴轻轻甩动。你很喜欢<<nnpc_he Robin>>轻柔又舒适的抚摸。
+		<<elseif $harpy gte 6>>
+			你很喜欢和<<nnpc_he Robin>>一起唱歌，<<nnpc_he Robin>>唱得几乎就像真正的鸟儿一样好。
+		<<else>>
+			你凝视了一会儿罗宾的照片，关上了吊坠盒。
+		<</if>>
+		<<case 3>>
+		<<if _robin.crossdressing gte 2>>
+		你想象着照片里的<<nnpc_he Robin>>穿着<<npcClothesText _robin "upper">>的样子。也许应当鼓励<<nnpc_he Robin>>换上衣服拍一张。
+		<<else>>
 		你凝视了一会儿罗宾的照片，关上了吊坠盒。
+		<</if>>
+		<</switch>>
 	<</if>>
 <<elseif $location is "island">>
 你的思绪转向了<<nnpc_him Robin>>。
@@ -30,12 +49,71 @@
 			你想到<<nnpc_he Robin>>总是充满希望的样子，下意识地扬起嘴角。<<lstress>><<stress -3>>
 		<</if>>
     <<case 2>>
-		<<if _robin.trauma gte 20>>
-			不知道<<nnpc_he Robin>>现在过得怎么样。<<gstress>><<stress 4>>
-		<<elseif _robin.dom gte 50>>
-			不知道<<nnpc_he Robin>>会不会试图来找你。
+		<<if getRobinLocation() is "school">>
+			罗宾现在应该在学校里学习，
+			<<if _robin.trauma gte 20>>
+				<<switch random(1, 2)>>
+				<<case 1>>
+				你担心<<nnpc_he Robin>>今天是否也缺了课。
+				<<case 2>>
+				你希望<<nnpc_he Robin>>在学校里没有被欺负。
+				<</switch>>
+			<<elseif _robin.dom gte 50>>
+				<<switch random(1, 2)>>
+				<<case 1>>
+				你回想起<<nnpc_he Robin>>在历史课上的出色表现。<<lstress>><<stress -3>>
+				<<case 2>>
+				你想起同学们总是夸赞<<nnpc_he Robin>>很可爱。有品。<<lstress>><<stress -3>>
+				<</switch>>
+			<</if>>
+		<<elseif getRobinLocation() is "orphanage">>
+			<<if _robin.trauma gte 40>>
+				<<switch random(1, 2)>>
+				<<case 1>>
+				你回想起罗宾独自在房间里落寞的样子。
+				<<case 2>>
+				你回想起罗宾每次迎你进房间时强打精神的样子。你略微振作了一些。<<gwillpower>><<willpower 1>>
+				<</switch>>
+			<<else>>
+				<<switch random(1, 2)>>
+				<<case 1>>
+				你回想起罗宾对喜欢的游戏滔滔不绝的样子。<<lstress>><<stress -3>>
+				<<case 2>>
+				你想起罗宾为了在游戏中获胜而努力的样子。<<lstress>><<stress -3>>
+				<</switch>><br>
+				<<if $robinconsole is 1>>
+				你很高兴<<nnpc_he Robin>>能买下那台游戏机。<br>
+				<<nnpc_he Robin>>想要的总是很少。
+				<<else>>
+				也许你该给<<nnpc_he Robin>>买一台新的游戏机。
+				<</if>>
+			<</if>>
+		<<elseif getRobinLocation() is "sleep">>
+			这个时间罗宾应当在睡觉，
+			<<if _robin.trauma gte 50>>
+			你想象着<<nnpc_he Robin>>不安稳的睡颜。<<gstress>><<stress 3>>
+			<<elseif random(1,10) is 1>>
+			你几乎有些怀念<<nnpc_he Robin>>那牢不可破的房间结界。
+			<<else>>
+			你想象着<<nnpc_he Robin>>安稳的睡颜。<<lstress>><<stress -3>>
+			<</if>>
+		<<elseif getRobinLocation() is "beach">>
+			罗宾现在应该经营<<nnpc_he Robin>>的柠檬水摊。
+			<<if $balloonStand.robin.status is "sabotaged">>
+			想到<<nnpc_he Robin>>那被你搅黄了生意的柠檬水摊，你有些心虚。<<gstress>><<stress 3>>
+			<<elseif $balloonStand.robin.status is "helped">>
+			你对<<nnpc_he Robin>>的柠檬水摊的生意现状很满意。<<lstress>><<stress -3>>
+			<<else>>
+			<<nnpc_he Robin>>总是在沙滩上努力工作，真该找一天带<<nnpc_he Robin>>穿着清凉的泳衣在海里好好玩耍一番。
+			<</if>>
+		<<elseif getRobinLocation() is "park">>
+			<<if $weather is "snow">>
+			你希望罗宾的羽绒服这样的天气下足够保暖。
+			<<else>>
+			你想起在热可可摊前脸颊被冻得红彤彤的罗宾。<<lstress>><<stress -3>>
+			<</if>>
 		<<else>>
-			不知道<<nnpc_He Robin>>现在过得怎么样。
+		你希望<<nnpc_he Robin>>一切都好。
 		<</if>>
 	<<case 3>>
 		你眼前浮现出<<nnpc_he Robin>>在<<print either("房间里打游戏","柠檬水摊前招揽客人","热可可摊前忙忙碌碌")>>的样子。
@@ -66,7 +144,15 @@
 		<<elseif $tiredness gte (C.tiredness.max / 5) * 4>>
 			你迷迷瞪瞪地盯了一会儿相片里的罗宾。
 		<<else>>
+			<<if $cat gte 6 or $cow gte 6>>
+			你的耳朵微微抖动。你很想念<<nnpc_he Robin>>轻柔又舒适的抚摸。
+			<<elseif $fox gte 6 or $wolfgirl gte 6>>
+			你的尾巴轻轻甩动。你很想念<<nnpc_he Robin>>轻柔又舒适的抚摸。
+			<<elseif $harpy gte 6>>
+			你很想念和<<nnpc_he Robin>>一起唱歌的日子。<<nnpc_he Robin>>唱得几乎就像真正的鸟儿一样好。
+			<<else>>
 			你很想念<<nnpc_him "Robin">>温暖的怀抱。
+			<</if>>
 		<</if>>
 	<</switch>>
 <<elseif $location is "asylum">>
@@ -96,13 +182,74 @@
 	<<else>>
 		<<switch random(1, 5)>>
     		<<case 1>>
-    			<<if _robin.trauma gte 20>>
-    				你希望<<nnpc_he Robin>>在没有你的情况下也能过得很好。
+    	<<if getRobinLocation() is "school">>
+			罗宾现在应该在学校里学习，
+			<<if _robin.trauma gte 20>>
+				<<switch random(1, 2)>>
+				<<case 1>>
+				你担心<<nnpc_he Robin>>今天是否也缺了课。
+				<<case 2>>
+				你希望<<nnpc_he Robin>>在学校里没有被欺负。
+				<</switch>>
+			<<elseif _robin.dom gte 50>>
+				<<switch random(1, 2)>>
+				<<case 1>>
+				你回想起<<nnpc_he Robin>>在历史课上的出色表现。<<lstress>><<stress -3>>
+				<<case 2>>
+				你想起同学们总是夸赞<<nnpc_he Robin>>很可爱。有品。<<lstress>><<stress -3>>
+				<</switch>>
+			<</if>>
+		<<elseif getRobinLocation() is "orphanage">>
+			<<if _robin.trauma gte 40>>
+				<<switch random(1, 2)>>
+				<<case 1>>
+				你回想起罗宾独自在房间里落寞的样子。
+				<<case 2>>
+				你回想起罗宾每次迎你进房间时强打精神的样子。你略微振作了一些。<<gwillpower>><<willpower 1>>
+				<</switch>>
+			<<else>>
+				<<switch random(1, 2)>>
+				<<case 1>>
+				你回想起罗宾对喜欢的游戏滔滔不绝的样子。<<lstress>><<stress -3>>
+				<<case 2>>
+				你想起罗宾为了在游戏中获胜而努力的样子。<<lstress>><<stress -3>>
+				<</switch>><br>
+				<<if $robinconsole is 1>>
+				你很高兴<<nnpc_he Robin>>能买下那台游戏机。<br>
+				<<nnpc_he Robin>>想要的总是很少。
 				<<else>>
-					你想到<<nnpc_he Robin>>总是充满希望的样子，下意识地扬起嘴角。<<lstress>><<stress -3>>
+				也许你该给<<nnpc_he Robin>>买一台新的游戏机。
 				<</if>>
+			<</if>>
+		<<elseif getRobinLocation() is "sleep">>
+			这个时间罗宾应当在睡觉，
+			<<if _robin.trauma gte 50>>
+			你想象着<<nnpc_he Robin>>不安稳的睡颜。<<gstress>><<stress 3>>
+			<<elseif random(1,10) is 1>>
+			你几乎有些怀念<<nnpc_he Robin>>那牢不可破的房间结界。
+			<<else>>
+			你想象着<<nnpc_he Robin>>安稳的睡颜。<<lstress>><<stress -3>>
+			<</if>>
+		<<elseif getRobinLocation() is "beach">>
+			罗宾现在应该经营<<nnpc_he Robin>>的柠檬水摊。
+			<<if $balloonStand.robin.status is "sabotaged">>
+			想到<<nnpc_he Robin>>那被你搅黄了生意的柠檬水摊，你有些心虚。<<gstress>><<stress 3>>
+			<<elseif $balloonStand.robin.status is "helped">>
+			你对<<nnpc_he Robin>>的柠檬水摊的生意现状很满意。<<lstress>><<stress -3>>
+			<<else>>
+			<<nnpc_he Robin>>总是在沙滩上努力工作，真该找一天带<<nnpc_he Robin>>穿着清凉的泳衣在海里好好玩耍一番。
+			<</if>>
+		<<elseif getRobinLocation() is "park">>
+			<<if $weather is "snow">>
+			你希望罗宾的羽绒服这样的天气下足够保暖。
+			<<else>>
+			你想起在热可可摊前脸颊被冻得红彤彤的罗宾。<<lstress>><<stress -3>>
+			<</if>>
+		<<else>>
+		你希望<<nnpc_he Robin>>一切都好。
+		<</if>>
 			<<case 2>>
-				你很想念<<nnpc_him "Robin">>。<<gtrauma>><<trauma 3>>
+				你回想起和罗宾在森林野餐的经历。<<nnpc_He Robin>>选择不进入森林深处是正确的。
 			<<case 3>>
 				你想知道<<nnpc_him "Robin">>知不知道你现在的处境，
 				<<if _robin.dom gte 50>>
@@ -136,7 +283,15 @@
 				<<elseif $tiredness gte (C.tiredness.max / 5) * 4>>
 				你迷迷瞪瞪地盯了一会儿相片里的罗宾。
 				<<else>>
-				你想念<<nnpc_him "Robin">>温暖的笑容。
+					<<if $cat gte 6 or $cow gte 6>>
+					你的耳朵微微抖动。你很想念<<nnpc_he Robin>>轻柔又舒适的抚摸。
+					<<elseif $fox gte 6 or $wolfgirl gte 6>>
+					你的尾巴轻轻甩动。你很想念<<nnpc_he Robin>>轻柔又舒适的抚摸。
+					<<elseif $harpy gte 6>>
+					你很想念和<<nnpc_he Robin>>一起唱歌的日子。<<nnpc_he Robin>>唱得几乎就像真正的鸟儿一样好。
+					<<else>>
+					你想念<<nnpc_him "Robin">>温暖的笑容。
+					<</if>>
 				<</if>>
 		<</switch>>	
 	<</if>>
@@ -144,12 +299,72 @@
 你看着照片，思绪放空。
 	<<switch random(1, 5)>>
 		<<case 1>>
-			你想知道<<nnpc_him "Robin">>知不知道你现在的处境，	
-			<<if _robin.dom gte 50>>
-				不知道<<nnpc_he Robin>>会不会试图来探望你。<<lstress>><<stress -3>>
-			<<else>>
-				你希望<<nnpc_him "Robin">>不会太过担心你。
+		<<if getRobinLocation() is "school">>
+			罗宾现在应该在学校里学习，
+			<<if _robin.trauma gte 20>>
+				<<switch random(1, 2)>>
+				<<case 1>>
+				你担心<<nnpc_he Robin>>今天是否也缺了课。
+				<<case 2>>
+				你希望<<nnpc_he Robin>>在学校里没有被欺负。
+				<</switch>>
+			<<elseif _robin.dom gte 50>>
+				<<switch random(1, 2)>>
+				<<case 1>>
+				你回想起<<nnpc_he Robin>>在历史课上的出色表现。<<lstress>><<stress -3>>
+				<<case 2>>
+				你想起同学们总是夸赞<<nnpc_he Robin>>很可爱。有品。<<lstress>><<stress -3>>
+				<</switch>>
 			<</if>>
+		<<elseif getRobinLocation() is "orphanage">>
+			<<if _robin.trauma gte 40>>
+				<<switch random(1, 2)>>
+				<<case 1>>
+				你回想起罗宾独自在房间里落寞的样子。
+				<<case 2>>
+				你回想起罗宾每次迎你进房间时强打精神的样子。你略微振作了一些。<<gwillpower>><<willpower 1>>
+				<</switch>>
+			<<else>>
+				<<switch random(1, 2)>>
+				<<case 1>>
+				你回想起罗宾对喜欢的游戏滔滔不绝的样子。<<lstress>><<stress -3>>
+				<<case 2>>
+				你想起罗宾为了在游戏中获胜而努力的样子。<<lstress>><<stress -3>>
+				<</switch>><br>
+				<<if $robinconsole is 1>>
+				你很高兴<<nnpc_he Robin>>能买下那台游戏机。<br>
+				<<nnpc_he Robin>>想要的总是很少。
+				<<else>>
+				也许你该给<<nnpc_he Robin>>买一台新的游戏机。
+				<</if>>
+			<</if>>
+		<<elseif getRobinLocation() is "sleep">>
+			这个时间罗宾应当在睡觉，
+			<<if _robin.trauma gte 50>>
+			你想象着<<nnpc_he Robin>>不安稳的睡颜。<<gstress>><<stress 3>>
+			<<elseif random(1,10) is 1>>
+			你几乎有些怀念<<nnpc_he Robin>>那牢不可破的房间结界。
+			<<else>>
+			你想象着<<nnpc_he Robin>>安稳的睡颜。<<lstress>><<stress -3>>
+			<</if>>
+		<<elseif getRobinLocation() is "beach">>
+			罗宾现在应该经营<<nnpc_he Robin>>的柠檬水摊。
+			<<if $balloonStand.robin.status is "sabotaged">>
+			想到<<nnpc_he Robin>>那被你搅黄了生意的柠檬水摊，你有些心虚。<<gstress>><<stress 3>>
+			<<elseif $balloonStand.robin.status is "helped">>
+			你对<<nnpc_he Robin>>的柠檬水摊的生意现状很满意。<<lstress>><<stress -3>>
+			<<else>>
+			<<nnpc_he Robin>>总是在沙滩上努力工作，真该找一天带<<nnpc_he Robin>>穿着清凉的泳衣在海里好好玩耍一番。
+			<</if>>
+		<<elseif getRobinLocation() is "park">>
+			<<if $weather is "snow">>
+			你希望罗宾的羽绒服这样的天气下足够保暖。
+			<<else>>
+			你想起在热可可摊前脸颊被冻得红彤彤的罗宾。<<lstress>><<stress -3>>
+			<</if>>
+		<<else>>
+		你希望<<nnpc_he Robin>>一切都好。
+		<</if>>
 		<<case 2>>
 			<<if _robin.trauma gte 20>>
     			你希望<<nnpc_he Robin>>在没有你的情况下也能过得很好。
@@ -200,7 +415,15 @@
 			<<elseif $tiredness gte (C.tiredness.max / 5) * 4>>
 			你迷迷瞪瞪地盯了一会儿相片里的罗宾。
 			<<else>>
-			你很想念<<nnpc_him "Robin">>温柔的怀抱。
+				<<if $cat gte 6 or $cow gte 6>>
+					你的耳朵微微抖动。你很想念<<nnpc_he Robin>>轻柔又舒适的抚摸。
+				<<elseif $fox gte 6 or $wolfgirl gte 6>>
+					你的尾巴轻轻甩动。你很想念<<nnpc_he Robin>>轻柔又舒适的抚摸。
+				<<elseif $harpy gte 6>>
+					你很想念和<<nnpc_he Robin>>一起唱歌的日子。<<nnpc_he Robin>>唱得几乎就像真正的鸟儿一样好。
+				<<else>>
+					你很想念<<nnpc_him "Robin">>温柔的怀抱。
+				<</if>>
 			<</if>>
 	<</switch>>
 <</if>>
