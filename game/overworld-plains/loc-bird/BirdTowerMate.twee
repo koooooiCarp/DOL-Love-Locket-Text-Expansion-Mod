@@ -22,6 +22,70 @@
 	<</if>>
 	<br><br>
     <<link [[继续|Bird Tower Mate Sex LL]]>><<set $sexstart to 1>><<npcincr "Great Hawk" love 3>><<npcincr "Great Hawk" dom 1>><<transform bird 1>><</link>><br>
+<<elseif $bird.activity is "brood">>
+	你走向巢，<<hawkText>>正坐在巢中孵蛋。看到你靠近，<<if $monster is 1>><<bHis>>向你露出微笑。<<else>><<bHe>>对你轻声咕咕叫。<</if>>
+	<br><br>
+	<<if $speech_attitude is "meek">>
+		你小心地爬进<<your_bird_text>>的怀里，轻轻地抚弄<<bhim>>的羽毛。"<<nnpc_wife "Great Hawk">>……我们来造更多宝宝吧。"
+	<<elseif $speech_attitude is "bratty">>
+		你跨进巢里，贴在<<your_bird_text>>的身边，让<<bhe>>的注意力从蛋转移到你身上。"想给孩子们造个伴儿吗，<<nnpc_wife "Great Hawk">>？"
+	<<else>>
+		你小心地钻进巢里，从身侧环抱住<<your_bird_text>>，"想来制造更多的孩子们吗，<<nnpc_wife "Great Hawk">>？"
+	<</if>>
+    <<deviancy3>>
+    <<if $monster is 1>>
+		<<if C.npc["Great Hawk"].dom gte 50>>
+			<<hawkText>>发出咕咕的笑声，"<<Wife>>……刚刚生产过需要恢复才能再有孩子。" <<bHe>>从蛋上站起，小心地将蛋拨至一旁， "但我无法拒绝<<Wife>>。"
+		<<else>>
+			"<<Wife>>……才刚刚生产过……需要恢复才能再有孩子。" <<bHe>>似乎有些羞涩，小心地将蛋拨至一旁， "但我无法拒绝<<Wife>>。"
+		<</if>>
+	<<else>>
+		<<beasttype>>发出一串困惑的鸣声，小心地从蛋上挪开，试图骑上你。
+	<</if>>
+	<br><br>
+    <<link [[继续|Bird Tower Mate Sex LL]]>><<set $sexstart to 1>><<npcincr "Great Hawk" love 3>><<npcincr "Great Hawk" dom 1>><<transform bird 1>><</link>><br>
+<<elseif $bird.activity is "rest">>/* 受伤或者怀孕 */
+	你走向巢，<<hawkText>>正在巢里休息。看到你靠近，<<if $monster is 1>><<bHis>>向你露出微笑。<<else>><<bHe>>对你轻声咕咕叫。<</if>>
+	<br><br>
+	<<if $bird.injured gt 1>>
+		<<if $speech_attitude is "meek">>
+			你小心地爬进<<your_bird_text>>的怀里，轻轻地抚摸<<bhim>>的羽毛，安抚<<hawkText>>伤口的疼痛感。"抱歉让<<nnpc_wife "Great Hawk">>受伤了……我想要更适当地向<<nnpc_wife "Great Hawk">>道歉，可以吗？"
+		<<elseif $speech_attitude is "bratty">>
+			你挤进巢里，贴在<<your_bird_text>>的身边，让<<bhe>>的注意力从疼痛转移到你身上。"要来做点别的事情伸展一下翅膀吗，<<nnpc_wife "Great Hawk">>？"
+		<<else>>
+			你小心地钻进巢里，从身侧环抱住<<your_bird_text>>，避免触碰到<<hawkText>>的伤口。"做点舒服的事情转移注意力会更轻松，要试试吗，<<nnpc_wife "Great Hawk">>？"
+		<</if>>
+    	<<deviancy3>>
+		<<if $monster is 1>>
+			<<if C.npc["Great Hawk"].dom gte 50>>
+				<<hawkText>>的眼睛亮了起来，"有<<Wife>>在我身边，会恢复地更好。" <<bHe>>扑倒在你身上。
+			<<else>>
+				"<<Wife>>不需要为我这么做，" <<bHe>>压倒在你的身上， "但我也无法拒绝<<Wife>>。"
+			<</if>>
+		<<else>>
+			<<beasttype>>发出一串喜悦的鸣声，小心地挪动翅膀，试图骑上你。
+		<</if>>
+	<<elseif npcIsPregnant("Great Hawk")>>
+		<<if $speech_attitude is "meek">>
+			你小心地爬进<<your_bird_text>>的怀里，轻轻地抚摸<<bhim>>的羽毛，缓解<<hawkText>>肚中的饱胀感。"<<nnpc_wife "Great Hawk">>辛苦了……我想要帮<<nnpc_wife "Great Hawk">>更舒服一点，可以吗？"
+		<<elseif $speech_attitude is "bratty">>
+			你挤进巢里，抚摸着<<your_bird_text>>的羽毛，让<<bhe>>的注意力从未出世的幼雏转移到你身上。"身心放松和润滑会有助于生产。要为我们的孩子的到来做点'准备工作'吗，<<nnpc_wife "Great Hawk">>？"
+		<<else>>
+			你小心地钻进巢里，从身侧环抱住<<your_bird_text>>，轻轻地抚摸<<hawkText>>隆起的肚皮。"做点舒服的事情转移注意力会更有助于放松。要试试吗，<<nnpc_wife "Great Hawk">>？"
+		<</if>>
+    	<<deviancy3>>
+		<<if $monster is 1>>
+			<<if C.npc["Great Hawk"].dom gte 50>>
+				<<hawkText>>发出咕咕的笑声，"<<Wife>>太兴奋了。还想要更多孩子吗？" <<bHe>>挪动身体，向你露出了<<bHis>>的泄殖腔。
+			<<else>>
+				"<<Wife>>不需要为我这么做，" <<bHe>>露出微笑，向你露出了<<bHis>>的泄殖腔。 "但我也无法拒绝<<Wife>>。"
+			<</if>>
+		<<else>>
+			<<beasttype>>发出一串满意的鸣声，挪动身体向你展示<<bHis>>的泄殖腔。
+		<</if>>
+	<</if>>
+	<br><br>
+    <<link [[继续|Bird Tower Mate Sex LL]]>><<set $sexstart to 1>><<set $hawk_oral to 1>><<npcincr "Great Hawk" love 3>><<npcincr "Great Hawk" dom 1>><<transform bird 1>><</link>><br>
 <<elseif $bird.activity is "bathe">>
     你走向雨水池，<<hawkText>>正在雨水池里洗澡。看到你靠近，<<print either("<<beasttype>>呼唤着你加入<<bhim>>","<<beasttype>>顽皮地向你泼水。","<<beasttype>>抖掉翅膀上的水，然后朝你的方向泼了一些水。")>>
 	<<strip>><<wash>><br><br>
@@ -72,8 +136,13 @@
 		<<set $position to "doggy">>
 		<<set $NPCList[0].stance to "top">>
 	<</if>>
+	<<if $hawk_oral is 1>>
+		<<npcoral>>
+		<<deviancy1>>
+	<<else>>
 		<<npc_attempt_sex>>
 		<<deviancy1>>
+	<</if>>
 <</if>>
 
 <<effects>>
@@ -93,7 +162,7 @@
 
 :: Bird Tower Mate Sex Finish LL
 <<effects>>
-
+<<unset $hawk_oral>>
 <<if $enemyarousal gte $enemyarousalmax>>
 
 	<<beastejaculation>>

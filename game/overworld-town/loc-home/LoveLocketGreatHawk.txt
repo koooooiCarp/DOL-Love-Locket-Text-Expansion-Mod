@@ -23,27 +23,34 @@
 <<switch random(1, 3)>>
 	<<case 1>>
 		<<if $bird.state isnot "home">>
-			<<hawkText>>不在巢里。你希望<<nnpc_him "Great Hawk">>能快一点回来。
+			<<hawkText>>不在塔里。你希望<<nnpc_him "Great Hawk">>能快一点回来。
 		<<elseif $bird.activity is "sing">>
 			你能听到<<hawkText>>的歌声从栖木传来，<<nnpc_him "Great Hawk">>的歌声在召唤你。
+		<<elseif $bird.activity is "bathe">>
+			你能听到<<hawkText>>在雨水池里扑打水面的声音传来。<<if $bird.upgrades.pot is 3 and getBirdBurnTime() gt 0>>水温正好，也许你该和<<your_bird_text>>一起享受一会儿。<</if>>
+		<<elseif $bird.activity is "brood">>
+			<<hawkText>>在你身后一动不动地孵着蛋。一想到你们还未出世的幼雏，你不由自主地产生了一阵幸福感。<<ltrauma>><<trauma -3>>
+		<<elseif $bird.activity is "build">>
+			<<hawkText>>正在你身后筑巢，<<switch random(1, 3)>><<case 1>>你听见树枝和叶子在<<hawkText>>脚下发出沙沙声。<<case 2>><<nnpc_him "Great Hawk">>正拍打着翅膀扬起巢里的灰尘。<<case 3>>你听见几根树枝被<<nnpc_him "Great Hawk">>啪嚓折断。<</switch>>
 		<<elseif $bird.activity is "sleep">>
 			<<hawkText>>在你身后安静地睡着，一切喧嚣都离你们很远。<<lstress>><<stress -3>>
 		<<else>>
 			你偶尔会思考当时为什么要把这块镜子搬上塔顶。
 		<</if>>
 	<<case 2>>
-		<<if Time.dayState is "night" and isBloodmoon()>>
+		<<if Weather.bloodMoon and Time.dayState is "night">>
 			不详的血色在镜中照映着，你感到一阵不安。
-		<<elseif $weather is "rain">>
-			雨水砸在雨水池里的声音在你耳边回荡。尽管<<print either("阴雨连绵","大雨倾盆","细雨如丝")>>，但你已经习惯了这种寒冷。
-		<<elseif $weather is "snow">>
-			外面很冷，荒原已经被白雪覆盖。<<if $harpy gte 6>>还好，你身上有保暖的羽毛覆盖。<</if>>
-		<<elseif $weather is "clear">>
-			今天晴空万里，不知道<<hawkText>>在烈日下飞行会不会感到炎热。
-		<<elseif $weather is "overcast">>
-			处在高塔上，头顶的云层看起来离你很近。<<if $harpy gte 6>>你的翅膀轻轻拍打着，想要顺应风的召唤。<</if>>
 		<<else>>
-			你身后的景象……看起来很奇怪。<span class="red">或许你把这个应该汇报给mod作者。</span>
+		<<switch Weather.name>>
+			<<case "clear" "lightClouds">>今天晴空万里，不知道<<hawkText>>在烈日下飞行会不会感到炎热。
+			<<case "lightPrecipitation" "heavyPrecipitation" "thunderStorm">>
+				<<if Weather.precipitation is "rain">>
+					雨水砸在雨水池里的声音在你耳边回荡。尽管<<print either("阴雨连绵","大雨倾盆","细雨如丝")>>，但你已经习惯了这种寒冷。
+				<<else>>
+					外面很冷，荒原已经被白雪覆盖。<<if $harpy gte 6>>还好，你身上有保暖的羽毛覆盖。<</if>>
+				<</if>>
+			<<case "heavyClouds">>处在高塔上，头顶的云层看起来离你很近。<<if $harpy gte 6>>你的翅膀轻轻拍打着，想要顺应风的召唤。<</if>>
+		<</switch>>
 		<</if>>
 	<<case 3>>
 	<<if $bird.state isnot "home">>
