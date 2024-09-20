@@ -1,5 +1,5 @@
 # 同心吊坠文本拓展Mod | Love Locket-Text Expansion
----
+
 | [**贴吧发布帖**](https://tieba.baidu.com/p/8823508316) | 
 
 ## 内容日志
