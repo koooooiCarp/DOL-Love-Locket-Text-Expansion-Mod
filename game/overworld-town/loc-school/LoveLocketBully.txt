@@ -1,4 +1,4 @@
-<<elseif $worn.neck.name is "love locket" and $bullyevent < 20 >>
+<<elseif $worn.neck.name is "love locket" and $bullyevent lt 20 >>
 	<<set $bullyevent += 1>>
 你注意到惠特尼从走廊对面朝你走来，<<his>>的几个朋友环绕在身边。在你避开前，<<he>>抓住你的肩膀，将你推向了储物柜。后脑勺的疼痛伴随着轻微的眩晕向你袭来，你感到眼前发黑。<<gpain>><<pain 4>>
 <br>

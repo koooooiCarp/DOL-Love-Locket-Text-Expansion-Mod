@@ -1,6 +1,6 @@
 {
   "name": "Love Locket-Text Expansion",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "additionFile": [
     "readme.md",
     "game/overworld-town/loc-home/LoveLocketLeave.txt",
