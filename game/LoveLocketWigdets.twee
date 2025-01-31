@@ -1,0 +1,188 @@
+:: LoveLocket Widgets [widget]
+
+<<widget 'LLTestFunc'>>
+	<<if $debug>>
+		<hr>
+		<<setupOptions>>
+		<span class="gold"><<lanSwitch "LoveLocket" "同心吊坠拓展" >></span>
+		<br>
+        同心吊坠mod内容的测试通道。
+		<br>
+        <<ind>><<link [[一键进入精神病院|Asylum Intro]]>><</link>>
+        <br>
+        <<ind>><<link [[一键进入监狱软坏|Police Cell]]>><<set $stat_police.pillory to 2>><<crimeUp 10000 "assault">><</link>><<gcrime "assault">>
+        <br>
+        <<ind>><<link [[一键进入海岛软坏|Island Treeline]]>><</link>>
+        <br>
+        <<ind>><<link [[一键进入鹰塔|Bird Tower]]>><</link>>
+        <br>
+        <<ind>><<link [[一键开始霸凌|BULLY TEST]]>><</link>>
+        <br>
+		<hr>
+	<</if>>
+<</widget>>
+
+
+/*储存吊坠相关功能*/
+<<widget "LL_store_pocket">>
+	<<if $worn.neck.name isnot "naked" and $worn.neck.collared isnot 1>>
+		在<<he>>为你安装项圈的时候，你默默将<<he>>取下的<<print $worn.neck.cn_name_cap>>放进了衣服口袋里保存。
+		<br><br>
+		<<neckundress "pocket">>
+		<<set $pocket to true>>
+		<<neckwear 21>>
+	<</if>>
+<</widget>>
+
+<<widget "LL_storeon_pocket">>
+	<<if $pocket is true>>
+		一旦<<he>>摘下了你的项圈，你就将之前藏起的颈饰重新戴了上去。
+		<br><br>
+		<<storeon "pocket">>
+		<<unset $pocket>>
+	<</if>>
+<</widget>>
+
+<<widget "LL_clean_pocket">>
+	<<if $pocket is true and $prisonStripBargain is 1>>
+		你将之前藏在衣服口袋里的颈饰掏出来放进了衣柜里。
+		<br>
+		<<set $worn.neck.type.push("broken")>><<neckruined true>><<set $worn.neck.collaredpolice to 0>><!--破坏项圈-->
+		<<storeon "pocket">><!--穿上颈饰-->
+		<<neckundress "prison">><!--脱下颈饰放入衣柜-->
+		<<unset $pocket>><!--清空口袋-->
+		<<neckwear 21>><<set $worn.neck.collaredpolice to 1>><!--戴上项圈-->
+		<<unset $prisonStripBargain>><!--删除事件标志-->
+		<br><br>
+	<</if>>
+<</widget>>
+
+
+/*破坏（可摘取）项圈相关功能*/
+<<widget "LL_attach_leash">>
+	<<if $worn.neck.collarBroked is 1>>
+		<<attach_leash_collarBroked>>
+	<<else>>
+		<<attach_leash>>
+	<</if>>
+<</widget>>
+
+<<widget "LL_detach_leash">>
+	<<if $worn.neck.collarBroked is 1>>
+		<<detach_leash_collarBroked>>
+	<<else>>
+		<<detach_leash>>
+	<</if>>
+<</widget>>
+
+<<widget "attach_leash_collarBroked">>
+	<<if $worn.neck.colour>><<set $_colour to $worn.neck.colour>><</if>>
+	<<if $worn.neck.name is "collar">>
+		<<set $worn.neck.type.push("broken")>>
+		<<neckruined _args[1]>>
+		<<neckwear 21 $_colour>>
+	<<elseif $worn.neck.name is "free use collar">>
+		<<set $worn.neck.type.push("broken")>>
+		<<neckruined _args[1]>>
+		<<neckwear 22 $_colour>>
+	<<elseif $worn.neck.name is "leather collar">>
+		<<set $worn.neck.type.push("broken")>>
+		<<neckruined _args[1]>>
+		<<neckwear 24 $_colour>>
+	<<elseif $worn.neck.name is "spiked collar">>
+		<<set $worn.neck.type.push("broken")>>
+		<<neckruined _args[1]>>
+		<<neckwear 26 $_colour>>
+	<</if>>
+<<set $worn.neck.cursed to 0>><<set $worn.neck.collarBroked to 1>>
+<</widget>>
+
+<<widget "detach_leash_collarBroked">>
+	<<if $worn.neck.colour>><<set $_colour to $worn.neck.colour>><</if>>
+	<<if $worn.neck.name is "collar with leash">>
+		<<set $worn.neck.type.push("broken")>>
+		<<neckruined _args[1]>>
+		<<neckwear 1 $_colour>>
+	<<elseif $worn.neck.name is "free use collar with leash">>
+		<<set $worn.neck.type.push("broken")>>
+		<<neckruined _args[1]>>
+		<<neckwear 20 $_colour>>
+	<<elseif $worn.neck.name is "leather collar with leash">>
+		<<set $worn.neck.type.push("broken")>>
+		<<neckruined _args[1]>>
+		<<neckwear 25 $_colour>>
+	<<elseif $worn.neck.name is "spiked collar with leash">>
+		<<set $worn.neck.type.push("broken")>>
+		<<neckruined _args[1]>>
+		<<neckwear 10 $_colour>>
+		<<set $worn.neck.collared to 1>>
+	<</if>>
+<<set $worn.neck.cursed to 0>><<set $worn.neck.collarBroked to 1>>
+<</widget>>
+
+
+/*精神病院查看同心吊坠*/
+<<widget "show_loveclocket_asylum">>
+    <<if $worn.neck.name is "love locket" and !isPregnancyEnding() and !V.daily.eden?.distract>>
+        <<if $leftarm is "bound" and $rightarm is "bound">>
+        你的脖子上戴着同心吊坠，你的手臂被束缚着，无法打开它。
+            <<if random(20) is 1 and $worn.neck.photo>>
+            然而，感受到它的重量也令你安心。<<lstress>><<stress -3>><<ltrauma>><<trauma -3>>
+            <</if>>
+        <<else>>
+        你的脖子上戴着同心吊坠。
+            <<if random(20) is 1 and $worn.neck.photo>>
+            你轻轻抚摸着它。这种触感令你安心。<<lstress>><<stress -5>><<ltrauma>><<trauma -5>>
+            <</if>>
+        <br><br>
+        <span @class="'clothes-'+$worn.neck.colour"><<icon "locket.png">></span><<link [[打开吊坠盒|MODLoveLocket]]>><<set $passage_mirror to $passage>><</link>>
+        <</if>>
+        <br><br>
+    <</if>>
+<</widget>>
+
+
+/*监狱凯拉吊坠反应*/
+<<widget "prison_kylar_notice">>
+	<<if $worn.neck.name isnot "collar" and $worn.neck.name isnot "collar with leash" and $worn.neck.name isnot "free use collar" and $worn.neck.name isnot "free use collar with leash">>
+		<<if !$kylarSeen.includes("brokencollar")>>
+			<<set $kylarSeen.pushUnique("brokencollar")>>
+			然而，<<he>>很快便抬起头来惊讶地盯着你的脖子。"你、你的项圈……"<br>
+			<<if $speech_attitude is "meek">>
+				"我偷偷把它弄坏了，"你低下头。"请、请替我保密。"
+			<<elseif $speech_attitude is "bratty">>
+				"那玩意儿太烦人了，所以我把它拆掉了。怎么了？"你笑着回答<<him>>。
+			<<else>>
+				"我把它拆下来了，"你回答<<him>>，"还请替我保密。"
+			<</if>>
+			<br>
+			凯拉尔看向你的眼神里带着崇拜，"你真强壮……"<<glove>><<npcincr Kylar love 1>>"但在外面最好还是假装戴上项圈，"<<he>>随即担忧地摇了摇头，"那、那些家伙会发现的。"
+		<<else>>
+			<<He>>的眼神时不时往你的脖子上瞟。
+			<<if $worn.neck.name is "love locket">>
+			"那是同心吊坠吗？"
+			<<set _kylar to statusCheck("Kylar")>>
+				<<if _kylarStatus.includes("Love")>>
+					<<if _kylarStatus.includes("Rage")>>
+						突然，<<He>>抬头盯向你的吊坠。在你能作出任何回答之前，<<he>>伸手试图触碰你的吊坠，"我……我能看看吗？"
+					<<elseif _kylarStatus.includes("Sus")>>
+						<<He>>紧张地盯着你的吊坠，"我……我能看看吗？"<<he>>缓缓地向你倾身。
+					<<else>>
+						<<He>>好奇地看向你的吊坠，"我……我能看看吗？"
+					<</if>><br><br>
+					<<if $worn.neck.photo is "Kylar">>
+						你略微犹豫一刻，打开了吊坠。<span class="green">里面是凯拉尔的照片。</span><br>
+						凯拉尔吃惊地倒吸了一口气，原地跳了起来。"亲、亲爱的，"<<he>>看起来快哭了，"你随身携带着我的照片？！而且还在这里？！"<<he>>颤抖着手紧紧抓住你，"这样做可能会招致那些家伙的惩罚，但、但没关系，我会保护你的，一定。"
+						<<npcincr Kylar love 5>><<npcincr Kylar rage -30>><<lllksuspicion>><br>
+						你向<<he>>敞开怀抱，你们深深地拥抱了一会儿。<<pass 5>><<lstress>><<stress -6>>
+					<<else>>
+						你向后退，对<<he>>摇了摇头。凯拉尔<<if _kylarStatus.includes("Rage")>>猛地捏紧了拳头，<<elseif _kylarStatus.includes("Sus")>>皱着眉看向你，<<else>>看起来很失望，<</if>>但没有更进一步。
+					<</if>>
+				<<else>>
+					<<He>>突然冒出这句话，随即又紧张地低下头嘟囔起来。你不太清楚<<he>>想说什么，但你能感到<<his>>的视线不断瞟向你的吊坠。
+				<</if>>
+			<</if>>
+		<</if>>
+		<br><br>
+	<</if>>
+<</widget>>

@@ -1,43 +1,24 @@
 {
   "name": "Love Locket-Text Expansion",
-  "version": "0.3.3",
+  "version": "0.4",
+  "nickName":"同心吊坠文本拓展",
   "additionFile": [
-    "readme.md",
-    "game/overworld-town/loc-home/LoveLocketLeave.txt",
-    "game/overworld-town/loc-home/LoveLocketSydney.txt",
-	"game/overworld-town/loc-home/LoveLocketKylar.txt",
-	"game/overworld-town/loc-home/LoveLocketGreatHawk.txt",
-	"game/overworld-town/loc-home/LoveLocketRobin.txt",
-    "game/overworld-forest/loc-asylum/LoveLocketAsylum.txt",
-	"game/overworld-town/loc-police/PoliceStore.txt",
-	"game/overworld-town/loc-police/PoliceStoreon.txt",
-	"game/overworld-town/loc-prison/PrisonStore.txt",
+	"readme.md",
 	"game/overworld-town/loc-prison/PrisonBrokeCollar.txt",
-	"game/base-system/collarBrokedLeash.txt",
-	"game/overworld-town/loc-prison/PrisonCollarOn.txt",
 	"game/overworld-town/loc-prison/PrisonCheckCollarCell.txt",
 	"game/overworld-town/loc-prison/PrisonCheckCollarGuards.txt",
+	"game/overworld-town/loc-prison/PrisonCollarOn.txt",
 	"game/overworld-town/loc-prison/PrisonNoCollarEvents.txt",
-	"game/overworld-town/loc-prison/PrisonLeashPunishment.txt",
-	"game/overworld-town/loc-prison/PrisonLeashRepunishment.txt",
-	"game/overworld-town/loc-prison/PrisonScarredLeash.txt",
 	"game/overworld-town/loc-prison/PrisonScarredLeashNoCollar.txt",
-	"game/overworld-town/loc-prison/PrisonLeashOff.txt",
-	"game/overworld-town/loc-prison/PrisonKylarCollar.txt",
 	"game/overworld-town/loc-school/LoveLocketBully.txt",
-	"game/overworld-town/loc-school/LoveLocketCrushSydney.txt",
 	"game/overworld-town/loc-school/LoveLocketCrushRobin.txt",
+	"game/overworld-town/loc-school/LoveLocketCrushSydney.txt",
 	"game/overworld-town/loc-school/LoveLocketCrushWhitney.txt",
-	"game/overworld-town/special-sydney/LoveLocketSyndeyNotice.txt",
-	"game/overworld-town/special-kylar/LoveLocketKylarNotice.txt",
-	"game/overworld-town/special-robin/LoveLocketRobinNotice.txt",
-	"game/overworld-town/loc-home/LLDebug.txt"
+	"game/LoveLocketRobinNotice.txt",
+	"game/LoveLocketSyndeyNotice.txt",
+	"game/LoveLocketKylarNotice.txt"
   ],
-  "tweeFileList": [
-	"game/overworld-town/loc-school/LoveLocketCrushShow.twee",
-	"game/overworld-town/loc-home/LoveLocketMasturbation.twee",
-	"game/overworld-plains/loc-bird/BirdTowerMate.twee"
-  ],
+  "tweeFileList": [],
   "addonPlugin": [ 
     {
       "modName": "TweeReplacer",
@@ -45,35 +26,9 @@
       "modVersion": "1.0.0",
       "params": [
         {
-          "passage": "Mirror Locket",
-          "findString": "]]>><</link>>",
-          "replace": "]]>><</link>><</if>>"
-        },
-        {
-          "passage": "Mirror Locket",
-          "findString": "<<link [[返回",
-          "replaceFile": "game/overworld-town/loc-home/LoveLocketLeave.txt"
-        },
-        {
-          "passage": "Mirror Locket 2",
-          "findString": "]]>><</link>>",
-          "replace": "]]>><</link>><</if>>"
-        },
-        {
-          "passage": "Mirror Locket 2",
-          "findString": "<<link [[继续",
-          "replaceFile": "game/overworld-town/loc-home/LoveLocketLeave.txt"
-        },
-		{
-			"passage": "Mirror Locket",
-			"findString": "<<if !$worn.neck.photo>>",
-			"replace": "<<if !$worn.neck.photo or $worn.neck.photo is \"none\">>"
-		},
-        {
-          "passage": "Asylum Cell",
-          "findString": "<<if $asylumstate isnot \"sleep\">>",
-          "replaceFile": "game/overworld-forest/loc-asylum/LoveLocketAsylum.txt",
-          "all": true
+			"passage": "Widgets Mirror",
+			"findString": "Mirror Locket",
+			"replace": "MODLoveLocket"
         },
 		{
 			"passage": "Police Cell",
@@ -82,23 +37,13 @@
 		},
 		{
 			"passage": "Police Cell",
-			"findString": "<<else>>",
-			"replaceFile": "game/overworld-town/loc-police/PoliceStore.txt"
-		},
-		{
-			"passage": "Police Station Collar Removal",
-			"findString": "<<link",
-			"replaceFile": "game/overworld-town/loc-police/PoliceStoreon.txt"
+			"findString": "<<set $worn.neck.collaredpolice to 1>>",
+			"replace": "<<LL_storeon_pocket>><<set $worn.neck.collaredpolice to 1>>"
 		},
 		{
 			"passage": "Prison Intro Strip Bargain",
 			"findString": "<<effects>>",
 			"replace": "<<effects>><<set $prisonStripBargain to 1>>"
-		},
-		{
-			"passage": "Prison Intro Cell",
-			"findString": "<<link",
-			"replaceFile": "game/overworld-town/loc-prison/PrisonStore.txt"
 		},
 		{
 			"passage": "Prison Medical Sabotage",
@@ -126,24 +71,19 @@
 			"replaceFile": "game/overworld-town/loc-prison/PrisonNoCollarEvents.txt"
 		},
 		{
-			"passage": "Widgets BDSM",
-			"findString": "<<widget \"attach_leash\">>",
-			"replaceFile": "game/base-system/collarBrokedLeash.txt"
-		},
-		{
 			"passage": "Prison Punishment 2",
 			"findString": "<<case \"leash\">>\n\t\t<<attach_leash>>",
-			"replaceFile": "game/overworld-town/loc-prison/PrisonLeashPunishment.txt"
+			"replace": "<<case \"leash\">>\n\t\t<<LL_attach_leash>>"
 		},
 		{
 			"passage": "Prison Repunishment",
-			"findString": "\t<<attach_leash>>\n<<elseif",
-			"replaceFile": "game/overworld-town/loc-prison/PrisonLeashRepunishment.txt"
+			"findString": "<<attach_leash>>\n<<elseif",
+			"replace": "<<LL_attach_leash>>\n<<elseif"
 		},
 		{
 			"passage": "Prison Scarred Turn",
-			"findString": "\t<<attach_leash>>",
-			"replaceFile": "game/overworld-town/loc-prison/PrisonScarredLeash.txt"
+			"findString": "<<attach_leash>>",
+			"replace": "<<LL_attach_leash>>"
 		},
 		{
 			"passage": "Prison Scarred Turn",
@@ -153,18 +93,13 @@
 		{
 			"passage": "Prison Remove Leash",
 			"findString": "<<detach_leash>>",
-			"replaceFile": "game/overworld-town/loc-prison/PrisonLeashOff.txt"
+			"replace": "<<LL_detach_leash>>"
 		},
 		{
 			"passage": "Widgets Prison",
 			"findString": "<<detach_leash>>",
-			"replaceFile": "game/overworld-town/loc-prison/PrisonLeashOff.txt"
-		},
-		{
-			"passage": "Prison Kylar",
-			"findString": "<br><br>",
-			"replaceFile": "game/overworld-town/loc-prison/PrisonKylarCollar.txt"
-		},		
+			"replace": "<<LL_detach_leash>>"
+		},	
 		{
 			"passage": "Widgets School Events",
 			"findString": "<<else>>\n\t\t<<set $bullyevent to 4>>",
@@ -188,54 +123,33 @@
 		{
 			"passage": "Widgets Sydney",
 			"findString": "<<if $daily.sydney.classWarn is 1>>",
-			"replaceFile": "game/overworld-town/special-sydney/LoveLocketSyndeyNotice.txt"
+			"replaceFile": "game/LoveLocketSyndeyNotice.txt"
 		},
 		{
 			"passage": "Widgets Kylar",
 			"findString": "<<elseif $kylar.riddle is 2>>",
-			"replaceFile": "game/overworld-town/special-kylar/LoveLocketKylarNotice.txt"
+			"replaceFile": "game/LoveLocketKylarNotice.txt"
 		},
 		{
 			"passage": "Widgets Robin",
 			"findString": "<<if $robinPostMortem>>",
-			"replaceFile": "game/overworld-town/special-robin/LoveLocketRobinNotice.txt"
-		},
-        {
-          	"passage": "Mirror Locket",
-          	"findString": "<<elseif $worn.neck.photo is \"Black Wolf\">>",
-          	"replaceFile": "game/overworld-town/loc-home/LoveLocketSydney.txt"
-        },
-		{
-			"passage": "Mirror Locket",
-			"findString": "<<elseif $worn.neck.photo is \"Eden\">>",
-			"replaceFile": "game/overworld-town/loc-home/LoveLocketKylar.txt"
-	  	},
-		{
-			"passage": "Mirror Locket",
-			"findString": "<br><br>\n\t\t<</if>>",
-			"replaceFile": "game/overworld-town/loc-home/LoveLocketGreatHawk.txt"
-	  	},
-		{
-			"passage": "Mirror Locket",
-			"findString": "<<elseif $worn.neck.photo is \"Whitney\">>",
-			"replaceFile": "game/overworld-town/loc-home/LoveLocketRobin.txt"
-	  	},
-		{
-			"passage": "Bedroom",
-			"findString": "/* Bed */",
-			"replaceFile": "game/overworld-town/loc-home/LLDebug.txt"
+			"replaceFile": "game/LoveLocketRobinNotice.txt"
 		}
       ]
     }
   ],
   "dependenceInfo": [
     {
-      "modName": "TweeReplacer",
-      "version": ">=1.0.0"
+		"modName": "TweeReplacer",
+		"version": ">=1.0.0"
     },
 	{
+		"modName": "Simple Frameworks",
+		"version": ">=1.15.1"
+	},
+	{
 		"modName": "GameVersion",
-		"version": ">=0.5.0.5"
+		"version": ">=0.5.3.0"
 	}
   ]
 }
