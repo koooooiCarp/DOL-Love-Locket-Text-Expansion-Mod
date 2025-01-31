@@ -2,7 +2,7 @@
 <<effects>>/*替换掉原passage内容。到底是谁改了这块代码我要跟你不共戴天*/
 你打开脖子上的吊坠。
 <br><br>
-<<set _colour to $carried.neck.colour>>
+<<set _colour to $worn.neck.colour>>
 <<neckstrip>><<wearProp "love locket" _colour>>
 <div class="img-txt">
 	<div id="locket">
@@ -56,7 +56,7 @@
 
 <<for _npc range setup.NPCNameList>>
 	<<capture _npc>>
-		<<if $carried.neck.photo != _npc and ($loveInterest.secondary is _npc or $loveInterest.tertiary is _npc or $loveInterestList?.includes(_npc))>>
+		<<if $carried.neck.photo != _npc and ($loveInterest.primary is _npc or $loveInterest.secondary is _npc or $loveInterest.tertiary is _npc or $loveInterestList?.includes(_npc))>>
 			<span @class="'clothes-'+$carried.neck.colour"><<icon "locket.png">></span>
 			<<if $carried.neck.photo>>
 				<<link [[`把照片换成${setup.NPC_CN_NAME(_npc)}`|Mirror Locket 2]]>><<set $carried.neck.photo to _npc>><</link>>
@@ -70,4 +70,4 @@
 <</for>>
 <br>
 
-<<getouticon>><<link [[返回|$passage_mirror]]>><</link>>
+<<getouticon>><<link [[返回|$passage_mirror]]>><<handheldon>><<neckon>><</link>>

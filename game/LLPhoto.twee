@@ -1028,7 +1028,6 @@
 <</widget>>
 
 <<widget "show_lovelocket_greathawk">>
-    <br><br>
     <<if $location is "home">>
         <<if $arousal gte ($arousalmax / 2) or $drugged gte 200>>
             你的身体因欲望而抽痛。你用手指轻抚照片中的<<hawkText>>，一种淫荡的想法从你心中升起。<br><br>
