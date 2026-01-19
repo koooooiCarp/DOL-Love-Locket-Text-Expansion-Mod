@@ -1,7 +1,7 @@
 # 同心吊坠文本拓展Mod | Love Locket-Text Expansion
 ---
 
-|[**贴吧发布贴**](https://tieba.baidu.com/p/9188437292)|[**前置需求**](https://github.com/emicoto/SCMLSimpleFramework/releases/tag/latest)|
+|[**贴吧发布贴**](https://tieba.baidu.com/p/8823508316)|[**前置需求**](https://github.com/MaplebirchLeaf/SCML-DOL-maplebirchframework/releases)|
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "name": "Love Locket-Text Expansion",
-  "version": "0.4",
+  "version": "0.5",
   "nickName":"同心吊坠文本拓展",
   "additionFile": [
 	"readme.md",
@@ -72,13 +72,13 @@
 		},
 		{
 			"passage": "Prison Punishment 2",
-			"findString": "<<case \"leash\">>\n\t\t<<attach_leash>>",
-			"replace": "<<case \"leash\">>\n\t\t<<LL_attach_leash>>"
+			"findString": "<<attach_leash>>",
+			"replace": "<<LL_attach_leash>>"
 		},
 		{
 			"passage": "Prison Repunishment",
-			"findString": "<<attach_leash>>\n<<elseif",
-			"replace": "<<LL_attach_leash>>\n<<elseif"
+			"findString": "<<attach_leash>>",
+			"replace": "<<LL_attach_leash>>"
 		},
 		{
 			"passage": "Prison Scarred Turn",
@@ -144,12 +144,8 @@
 		"version": ">=1.0.0"
     },
 	{
-		"modName": "Simple Frameworks",
-		"version": ">=1.15.1"
-	},
-	{
 		"modName": "GameVersion",
-		"version": ">=0.5.3.0"
+		"version": ">=0.5.7.9"
 	}
   ]
 }
